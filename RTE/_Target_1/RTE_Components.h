@@ -59,8 +59,6 @@
 #define RTE_Network_Interface_ETH_0     /* Network Interface ETH 0 */
 #define RTE_Network_Interface_ETH_1     /* Network Interface ETH 1 */
 
-/* Keil.MDK-Plus::Network:Service:Web Server Compact:HTTP:7.19.0 */
-#define RTE_Network_Web_Server_RO       /* Network Web Server with Read-only Web Resources */
 /* Keil.MDK-Plus::Network:Socket:BSD:7.19.0 */
 #define RTE_Network_Socket_BSD          /* Network Socket BSD */
 /* Keil.MDK-Plus::Network:Socket:TCP:7.19.0 */

@@ -174,16 +174,19 @@ int main(void)
   HAL_Delay(100);
   HAL_GPIO_WritePin(ETH_RST_GPIO_Port , ETH_RST_Pin, GPIO_PIN_SET);
 
+	extern void app_init(void);
+	app_init();
+
 	// Initialize CMSIS-RTOS2
   osKernelInitialize();
- 
+
 	extern void app_main (void *argument);
   // Create application main thread
   osThreadNew(app_main, NULL, NULL);
- 
+
   // Start the kernel and execute the first thread
   osKernelStart();
-	
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -288,8 +291,8 @@ void PeriphCommonClock_Config(void)
                               |RCC_PERIPHCLK_FDCAN;
   PeriphClkInitStruct.PLL2.PLL2M = 2;
   PeriphClkInitStruct.PLL2.PLL2N = 12;
-  PeriphClkInitStruct.PLL2.PLL2P = 1;
-  PeriphClkInitStruct.PLL2.PLL2Q = 2;
+  PeriphClkInitStruct.PLL2.PLL2P = 3;
+  PeriphClkInitStruct.PLL2.PLL2Q = 5;
   PeriphClkInitStruct.PLL2.PLL2R = 1;
   PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_3;
   PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOMEDIUM;
@@ -598,7 +601,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;

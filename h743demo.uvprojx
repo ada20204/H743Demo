@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\App;.\Flash;.\LAN8720A</IncludePath>
+              <IncludePath>.\App;.\Flash;.\LAN8720A;.\Mongoose</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -564,6 +564,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Mongoose</GroupName>
+          <Files>
+            <File>
+              <FileName>mongoose_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Mongoose\mongoose_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>net.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Mongoose\net.c</FilePath>
+            </File>
+            <File>
+              <FileName>packed_fs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Mongoose\packed_fs.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
@@ -583,6 +603,9 @@
         </Group>
         <Group>
           <GroupName>::Network</GroupName>
+        </Group>
+        <Group>
+          <GroupName>::Network Library</GroupName>
         </Group>
         <Group>
           <GroupName>::RTOS</GroupName>
@@ -779,6 +802,12 @@
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
+      <component Cclass="Network Library" Cgroup="Mongoose" Cvendor="Cesanta" Cversion="7.13.0">
+        <package name="Mongoose" schemaVersion="1.7.2" url="https://mongoose.ws/downloads/armpack/" vendor="Cesanta" version="7.13.1"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
       <component Cbundle="MDK-Plus" Cclass="File System" Cgroup="CORE" Cvariant="SFN Debug" Cvendor="Keil" Cversion="6.16.6" condition="CMSIS Core with RTOS and File System I/O and Event Recorder">
         <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
         <targetInfos>
@@ -807,12 +836,6 @@
         <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
         <targetInfos>
           <targetInfo instances="2" name="Target 1" versionMatchMode=""/>
-        </targetInfos>
-      </component>
-      <component Cbundle="MDK-Plus" Cclass="Network" Cgroup="Service" Csub="Web Server Compact" Cvariant="HTTP" Cvendor="Keil" Cversion="7.19.0" condition="Network Web Server Compact">
-        <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
-        <targetInfos>
-          <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
       <component Cbundle="MDK-Plus" Cclass="Network" Cgroup="Socket" Csub="BSD" Cvendor="Keil" Cversion="7.19.0" condition="Network UDP/TCP">
@@ -1122,12 +1145,10 @@
         </targetInfos>
       </file>
       <file attr="config" category="header" name="Network\Config\Net_Config_HTTP_Server.h" version="7.2.0">
-        <instance index="0">RTE\Network\Net_Config_HTTP_Server.h</instance>
+        <instance index="0" removed="1">RTE\Network\Net_Config_HTTP_Server.h</instance>
         <component Cbundle="MDK-Plus" Cclass="Network" Cgroup="Service" Csub="Web Server Compact" Cvariant="HTTP" Cvendor="Keil" Cversion="7.19.0" condition="Network Web Server Compact" isDefaultVariant="1"/>
         <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
-        <targetInfos>
-          <targetInfo name="Target 1"/>
-        </targetInfos>
+        <targetInfos/>
       </file>
       <file attr="config" category="header" name="Network\Config\Net_Config_TCP.h" version="7.1.1">
         <instance index="0">RTE\Network\Net_Config_TCP.h</instance>
@@ -1149,6 +1170,14 @@
         <instance index="0">RTE\Network\Net_Debug.c</instance>
         <component Cbundle="MDK-Plus" Cclass="Network" Cgroup="CORE" Cvariant="IPv4 Debug" Cvendor="Keil" Cversion="7.19.0" condition="CMSIS Core with RTOS and Event Recorder"/>
         <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="header" name="Mongoose\config\mongoose_custom.h" version="1.0.0">
+        <instance index="0">RTE\Network_Library\mongoose_custom.h</instance>
+        <component Cclass="Network Library" Cgroup="Mongoose" Cvendor="Cesanta" Cversion="7.13.0"/>
+        <package name="Mongoose" schemaVersion="1.7.2" url="https://mongoose.ws/downloads/armpack/" vendor="Cesanta" version="7.13.1"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>

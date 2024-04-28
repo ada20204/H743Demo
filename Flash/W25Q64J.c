@@ -578,14 +578,7 @@ static ARM_FLASH_INFO * GetInfo (void) {
   }	
 	/* Deselect Slave */
   ptrSPI->Control(ARM_SPI_CONTROL_SS, ARM_SPI_SS_INACTIVE);
-	
-	uint8_t send[4] = {0x9F, 0xA5, 0xA5, 0xA5};
-	uint8_t recive[4] = {0};
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
-	extern SPI_HandleTypeDef hspi1;
-	HAL_SPI_TransmitReceive(&hspi1, send, recive, sizeof(send), 1000);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
-	
+
 	chipId = (buf[1] << 16) | (buf[2] << 8) | buf[3];
 	
 	switch (chipId & 0x000000FF)
