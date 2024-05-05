@@ -2,7 +2,8 @@
 #include "cmsis_os2.h"
 #include "stdio.h"
 #include "rl_usb.h"
-#include "rl_net.h"
+#include "rl_net.h" // Keil.MDK-Pro::Network:CORE
+#include "rl_fs.h"  // Keil.MDK-Pro::File System:CORE
 
 #include "Driver_Flash.h"
 #include "Driver_Spi.h"
@@ -23,21 +24,21 @@ void app_init(void)
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
 
 	/* Initialize the SPI driver */
-  Driver_SPI1.Initialize(NULL);
-  /* Power up the SPI peripheral */
-  Driver_SPI1.PowerControl(ARM_POWER_FULL);
-  /* Configure the SPI to Master, 8-bit mode @10000 kBits/sec */
-  Driver_SPI1.Control(ARM_SPI_MODE_MASTER | ARM_SPI_CPOL1_CPHA1 | ARM_SPI_MSB_LSB | ARM_SPI_SS_MASTER_SW | ARM_SPI_DATA_BITS(8), 25000000);
-  /* SS line = INACTIVE = HIGH */
-  Driver_SPI1.Control(ARM_SPI_CONTROL_SS, ARM_SPI_SS_INACTIVE);
+	Driver_SPI1.Initialize(NULL);
+	/* Power up the SPI peripheral */
+	Driver_SPI1.PowerControl(ARM_POWER_FULL);
+	/* Configure the SPI to Master, 8-bit mode @10000 kBits/sec */
+	Driver_SPI1.Control(ARM_SPI_MODE_MASTER | ARM_SPI_CPOL1_CPHA1 | ARM_SPI_MSB_LSB | ARM_SPI_SS_MASTER_SW | ARM_SPI_DATA_BITS(8), 25000000);
+	/* SS line = INACTIVE = HIGH */
+	Driver_SPI1.Control(ARM_SPI_CONTROL_SS, ARM_SPI_SS_INACTIVE);
 
 	for (int i = 0; i < sizeof(recive); ) { recive[i++] = 0;}
 
 	/* SS line = ACTIVE = LOW */
-  Driver_SPI1.Control(ARM_SPI_CONTROL_SS, ARM_SPI_SS_ACTIVE);
+	Driver_SPI1.Control(ARM_SPI_CONTROL_SS, ARM_SPI_SS_ACTIVE);
 	Driver_SPI1.Transfer(send, recive, 4);
 	/* SS line = INACTIVE = HIGH */
-  Driver_SPI1.Control(ARM_SPI_CONTROL_SS, ARM_SPI_SS_INACTIVE);
+	Driver_SPI1.Control(ARM_SPI_CONTROL_SS, ARM_SPI_SS_INACTIVE);
 
 	/* Uninitialize the SPI driver */
 	Driver_SPI1.Uninitialize();
@@ -66,6 +67,11 @@ void app_main(void *argument)
 
 	USBD_Initialize(0); // USB Device 0 Initialization
 	USBD_Connect(0);	  // USB Device 0 Connect
+
+	if (finit("M0:") == fsOK)
+	{
+		fmount("M0:");
+	}
 
 	osDelay(500);
 	netInitialize();

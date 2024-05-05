@@ -838,6 +838,12 @@
           <targetInfo instances="2" name="Target 1" versionMatchMode=""/>
         </targetInfos>
       </component>
+      <component Cbundle="MDK-Plus" Cclass="Network" Cgroup="Service" Csub="FTP Server" Cvendor="Keil" Cversion="7.19.0" condition="Network TCP and File System Drive">
+        <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
       <component Cbundle="MDK-Plus" Cclass="Network" Cgroup="Socket" Csub="BSD" Cvendor="Keil" Cversion="7.19.0" condition="Network UDP/TCP">
         <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
         <targetInfos>
@@ -1139,6 +1145,14 @@
       <file attr="config" category="header" name="Network\Config\Net_Config_ETH.h" version="7.4.0">
         <instance index="1">RTE\Network\Net_Config_ETH_1.h</instance>
         <component Cbundle="MDK-Plus" Cclass="Network" Cgroup="Interface" Csub="ETH" Cvendor="Keil" Cversion="7.19.0" condition="Network Driver ETH" maxInstances="2"/>
+        <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="header" name="Network\Config\Net_Config_FTP_Server.h" version="7.0.0">
+        <instance index="0">RTE\Network\Net_Config_FTP_Server.h</instance>
+        <component Cbundle="MDK-Plus" Cclass="Network" Cgroup="Service" Csub="FTP Server" Cvendor="Keil" Cversion="7.19.0" condition="Network TCP and File System Drive"/>
         <package name="MDK-Middleware" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="Keil" version="7.17.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>

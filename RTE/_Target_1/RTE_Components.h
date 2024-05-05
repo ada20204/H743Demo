@@ -59,6 +59,8 @@
 #define RTE_Network_Interface_ETH_0     /* Network Interface ETH 0 */
 #define RTE_Network_Interface_ETH_1     /* Network Interface ETH 1 */
 
+/* Keil.MDK-Plus::Network:Service:FTP Server:7.19.0 */
+#define RTE_Network_FTP_Server          /* Network FTP Server */
 /* Keil.MDK-Plus::Network:Socket:BSD:7.19.0 */
 #define RTE_Network_Socket_BSD          /* Network Socket BSD */
 /* Keil.MDK-Plus::Network:Socket:TCP:7.19.0 */
