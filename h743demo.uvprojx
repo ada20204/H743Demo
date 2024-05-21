@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>0</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\App;.\Flash;.\LAN8720A;.\Mongoose</IncludePath>
+              <IncludePath>.\App;.\LAN8720A;.\Mongoose;.\RTE_Flash\Flash;.\RTE_Flash\sfud\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -491,9 +491,29 @@
           <GroupName>Flash</GroupName>
           <Files>
             <File>
-              <FileName>W25Q64J.c</FileName>
+              <FileName>W25QxxJ.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Flash\W25Q64J.c</FilePath>
+              <FilePath>.\RTE_Flash\Flash\W25QxxJ.c</FilePath>
+            </File>
+            <File>
+              <FileName>sfud_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\RTE_Flash\sfud\port\sfud_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>sfud.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\RTE_Flash\sfud\src\sfud.c</FilePath>
+            </File>
+            <File>
+              <FileName>sfud_sfdp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\RTE_Flash\sfud\src\sfud_sfdp.c</FilePath>
+            </File>
+            <File>
+              <FileName>sfud_cfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RTE_Flash\sfud\inc\sfud_cfg.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -750,6 +770,12 @@
       </component>
       <component Cbundle="FreeRTOS" Cclass="RTOS" Cgroup="Timers" Cvendor="ARM" Cversion="10.5.1" condition="FreeRTOS Timers">
         <package name="CMSIS-FreeRTOS" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="10.5.1"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Capiversion="2.2.0" Cclass="CMSIS Driver" Cgroup="Ethernet MAC" Csub="Custom" Cvendor="ARM" Cversion="1.0.0" custom="1">
+        <package name="CMSIS" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="6.0.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
